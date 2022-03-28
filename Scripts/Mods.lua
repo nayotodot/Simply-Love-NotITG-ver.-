@@ -1,5 +1,5 @@
 ---------------------------------------------------------------------------------------------------
---  __  __			 _   __  __		  _   _   _		  _					 _   _			  _	  
+--  __  __			 _   __  __		  _   _   _		  _					 _   _			  _
 -- |  \/  | __ _  __| | |  \/  | __ _| |_| |_( )___  | |   _   _  __ _  | | | | __ _  ___| | _____
 -- | |\/| |/ _` |/ _` | | |\/| |/ _` | __| __|// __| | |  | | | |/ _` | | |_| |/ _` |/ __| |/ / __|
 -- | |  | | (_| | (_| | | |  | | (_| | |_| |_  \__ \ | |__| |_| | (_| | |  _  | (_| | (__|   <\__ \
@@ -46,10 +46,10 @@
 -- BooCommand=%function(self) JudgmentCommand(self,5) end
 -- MissCommand=%function(self) JudgmentCommand(self,6) end
 
--- [HoldJudgment]				  
+-- [HoldJudgment]
 -- OKCommand=%function(self) HoldCommand(self,7) end
 -- NGCommand=%function(self) HoldCommand(self,8) end
-						
+
 --------------------------------
 -- BGAnimations
 --------------------------------
@@ -96,7 +96,7 @@
 	judgmentFontList = { 'Default' , 'Love' , 'Tactics', 'Chromatic', 'Deco', 'GrooveNights', 'ITG2' }
 	if FUCK_EXE then -- Auto load on NotITG
 		local list = { 'Default' }
-		
+
 		local dir = string.sub(THEME:GetPath(2,'','_blank.png'),9)
 		dir = string.sub(dir,1,string.find(dir,'/')-1)
 		for _,v in pairs({ GAMESTATE:GetFileStructure('Themes/'.. dir ..'/Graphics/_Judgments/') }) do
@@ -112,7 +112,7 @@
 -- Used with ThemeFiles function
 	themeDir = '_ThemeFiles'
 
--- Used with LifeBar option 
+-- Used with LifeBar option
 	lifeBarSizeAdd = { Width = 0, Height = 4, OffsetX = 0, OffsetY = -2 } -- Allows size adjustments for cases like Meatboy's progress bar.
 
 -- Used with CompareScore and Measure display
@@ -151,7 +151,7 @@ function Profile(pn) if not PROFILEMAN then return {} end if pn == 0 then return
 function GetPref(str) return PREFSMAN:GetPreference(str) end
 function SetPref(str,val) return PREFSMAN:SetPreference(str,val) end
 function ThemeFile( file ) return THEME:GetPath( EC_GRAPHICS, '' , themeDir..'/'..file ) end
-function ThemeName() local str = string.sub(THEME:GetPath(2,'','_blank.png'),9) return string.sub(str,1,string.find(str,'/')-1) end   
+function ThemeName() local str = string.sub(THEME:GetPath(2,'','_blank.png'),9) return string.sub(str,1,string.find(str,'/')-1) end
 function VocalizePath() return '/Themes/' .. tostring(Profile(0).Love and Profile(0).Love.Dir or 'Simply Love') .. '/Vocalize/' end
 function IsType(a,t) return string.find(tostring(a),t) end
 function TableToString(t) local s = '' for i,v in ipairs(t) do s = s .. tostring(v) end return s end
@@ -191,11 +191,11 @@ function ScreenEdit() EditMode = true; end
 ---------------------------------------
 
 function JudgmentInit()
-	
+
 	if FakeCombo == nil or not FakeCombo then
 		FakeCombo = {0,0};
 	end
-	
+
 	judge = {}; ghost = {};
 	for pn = 1,2 do judge[pn] = {0,0,0,0,0,0,0,0,0, T = 0, MaxDP = 0, CurDP = 0, Data = {}, Score = 0, Steps = {}, Stream = {{{0,0}}} } GhostData(pn,'Decompress') for i,v in ipairs(trackedStreams) do judge[pn].Stream[i] = {} end end
 	for i,v in ipairs(holdJudgments) do if i <= table.getn(holdJudgments)/2 then if Player(1) then v:aux(1) else v:aux(2) end else if Player(2) then v:aux(2) else v:aux(1) end end end
@@ -203,7 +203,7 @@ function JudgmentInit()
 end
 
 function GameplayUpdate(self)
-	
+
 	for pn=1,2 do
 		if Player(pn) then
 			UpdateCheck('Danger',pn)
@@ -225,7 +225,7 @@ function GameplayUpdate(self)
 			end -- Record judgment of death, checked after mine detection.
 		end
 	end
-	
+
 end
 
 function JudgmentCommand(self,n) TrackJudgment(self,n) JudgmentTween(self) end
@@ -233,7 +233,7 @@ function HoldCommand(self,n) TrackJudgment(self,n) HoldTween(self) end
 
 function TrackJudgment(self,j,p)
 	local pn = p or math.max(self:getaux(),1)
-	
+
 	judge[pn].Score = GetScore(pn)
 	judge[pn][j] = judge[pn][j] + 1
 	judge[pn].CurDP = judge[pn].CurDP + ScoreWeight(j)
@@ -250,7 +250,7 @@ function TrackJudgment(self,j,p)
 		AddStepToStream(pn,j)
 	end
 	table.insert( judge[pn].Data , { r , MusicClock() } ) -- compressed to ghost data
-	
+
 	--fake combo shit
 	if j < 7 then
 		if j < 4 then
@@ -260,7 +260,7 @@ function TrackJudgment(self,j,p)
 		end
 		MESSAGEMAN:Broadcast('UpdateFakeComboP'..pn);
 	end
-	
+
 end
 
 trackedStreams = {0,1,4,8,12,16,24,32}
@@ -324,8 +324,8 @@ function UpdateCompareText(pn) -- upgrade to deal with 'no maxdp' situations? Pu
 		if ModCustom.Compare[pn] == 3 then if ghost[pn].pn ~= 0 then n = math.floor(ghost[pn].Score*judge[pn].MaxDP) elseif judge[pn].T == ghost[pn].T then n = ghost[pn].CurDP end end
 		if ModCustom.Compare[pn] == 4 then n = judge[pn].MaxDP end
 		if (ModCustom.Compare[pn] == 5 and judge[1].T == judge[2].T) then n = judge[math.mod(pn,2) + 1].CurDP end
-	if n ~= 0 then 
-		n = math.max(judge[pn].CurDP - n,GetScore(pn)*MaxDP[pn]/100-judge[pn].MaxDP) 
+	if n ~= 0 then
+		n = math.max(judge[pn].CurDP - n,GetScore(pn)*MaxDP[pn]/100-judge[pn].MaxDP)
 		local str = (math.abs(n) > DPLimit and string.format('%+4.2f',100*n/MaxDP[pn]+0.005*n/math.abs(n)) .. '%') or string.format('%+1.0f',n) -- convert to percent if ceil positives, floor negatives.
 		if math.abs(n) < 0.1 then str = '' end
 		compareText[pn]:diffuse(CompareTextColor(n)) compareText[pn]:settext(str)
@@ -378,7 +378,7 @@ function GhostData(pn,fnctn,check)
 		end
 		return f
 	end
-	  
+
 	local function CompareParams(v) -- Score, MaxDP, Difficulty, Columns, SongDir
 		local f = ParseString(v[0],string.char(1))
 		if f[2] == MaxDP[pn] and f[3] == GAMESTATE:GetCurrentSteps(pn-1):GetDifficulty() and f[4] == NumColumns(pn) and f[5] == GAMESTATE:GetCurrentSong():GetSongDir() then return tonumber(f[1]) or 0 else return false end
@@ -485,7 +485,7 @@ function GhostData(pn,fnctn,check)
 	if fnctn == 'Check' then
 		local t = GhostDataCache[check]
 		if not t then return false end
-		
+
 		local song = GAMESTATE:GetCurrentSong()
 		if not song then return false end
 
@@ -497,11 +497,11 @@ function GhostData(pn,fnctn,check)
 
 		t = t[steps:GetDifficulty()]
 		if not t then return false end
-		
+
 		if t.Col ~= NumColumns(pn) then return false end
 
 		if t.MaxDP ~= MaxDP[pn] then return false end
-		
+
 		return true
 
 	end
@@ -527,7 +527,7 @@ function JudgeGraphArray()
 					judgeGraphArray[pn][j][0] = math.max(judgeGraphArray[pn][j][0],judgeGraphArray[pn][j][i])
 				end
 			end
-		end   
+		end
 	end
 end
 
@@ -559,7 +559,7 @@ function AddScoreToListFromEval()
 	local judge = {{},{}}
 	for pn=1,2 do if Player(pn) then
 		for i=1,9 do table.insert(judge[pn],_G[judgmentList[i]][pn]) end
-		score[pn] = GetScore(pn)		   
+		score[pn] = GetScore(pn)
 		fail[pn] = STATSMAN:GetCurStageStats():GetPlayerStageStats(pn-1):GetGrade() == GRADE_FAILED
 		steps[pn] = GAMESTATE:GetCurrentSteps(pn-1)
 		if score[pn] ~= 0 then add = true end
@@ -577,7 +577,7 @@ function AddScoreToListFromEval()
 		}
 	table.insert(AllScores,list)
 	end
-end  
+end
 
 ------------------------
 -- Capturing Functions
@@ -608,7 +608,7 @@ end
 
 function LoadFloatFromProfile(pn,m,t)
 	if not ModsPlayer[m] then ModsPlayer[m] = {0,0} end
-	if t.Mods[m] then 
+	if t.Mods[m] then
 		ApplyMod(m,pn,t.Mods[m])
 		ModsPlayer[m][pn] = t.Mods[m]
 	end
@@ -634,7 +634,7 @@ function OptionFromEvalPlayerOptions(pn,m)
 	s = string.sub(mods,s[1],s[2]-2-string.len(m))
 	return s
 end
-	
+
 function CapturePlayerMetric(self,str) if _G[str][1] or not Player(1) then _G[str][2] = self; self:aux(2) else _G[str][1] = self; self:aux(1) end end
 
 function SongInfo(self)
@@ -680,7 +680,7 @@ function CaptureMeter()
 end
 
 function CaptureSteps()
-	for pn = 1, 2 do if GAMESTATE:GetCurrentSteps(pn-1) then st = GAMESTATE:GetCurrentSteps(pn-1):GetStepsType() break end end 
+	for pn = 1, 2 do if GAMESTATE:GetCurrentSteps(pn-1) then st = GAMESTATE:GetCurrentSteps(pn-1):GetStepsType() break end end
 	steps = {}
 	if GAMESTATE:GetCurrentSong() then
 		steps = GAMESTATE:GetCurrentSong():GetStepsByStepsType( st )
@@ -726,15 +726,15 @@ function GetSongName()
 end
 
 function GetScore(pn)
-	
+
 	if EditMode or GAMESTATE:IsCourseMode() then return 0 end
-	
+
 	local s = 0
 	if Screen():GetChild('PercentP'..pn) then s = Screen():GetChild('PercentP'..pn):GetChild('PercentP'..pn):GetText() end
 	if Screen():GetChild('ScoreP'..pn) then s = Screen():GetChild('ScoreP'..pn):GetChild('ScoreDisplayPercentage Percent'):GetChild('PercentP'..pn):GetText() end
 	s = string.gsub(s,'%%','')
 	return tonumber(s) or 0
-	
+
 end
 
 function ModPulse(self,mod)
@@ -770,7 +770,7 @@ end
 
 function BPMlabelRate(self)	s = AdjustedBPM() .. ' BPM ' .. RateModAppend() if self then self:settext(s) else return s end end
 function BPMandRate(self) s = AdjustedBPM() .. ' ' .. RateModAppend() if self then self:settext(s) else return s end end
-function RateBPMlabel(self) s = RateModText() if s ~= '' then s = s .. ' (' .. AdjustedBPM() .. ' BPM)' end	if self then self:settext(s) else return s end end 
+function RateBPMlabel(self) s = RateModText() if s ~= '' then s = s .. ' (' .. AdjustedBPM() .. ' BPM)' end	if self then self:settext(s) else return s end end
 
 function MetaModsText(self)
 	mods = {}
@@ -859,14 +859,14 @@ modRate = 1
 ModsPlayer = {}
 ModsMaster = {}
 ModsMaster.Perspective =	{ modlist = {'Overhead','Hallway','Distant','Incoming','Space'}, Select = 1 }
-ModsMaster.NoteSkin =		{ modlist = NOTESKIN:GetNoteSkinNames(), Select = 1 }
+ModsMaster.NoteSkin =		{ modlist = {'Shaq'}, Select = 1 }
 ModsMaster.Turn =			{ modlist = {'Mirror','SoftShuffle','SmartBlender','Blender',}, default = 'no mirror,no left,no right,no shuffle,no supershuffle,no softshuffle, no spookyshuffle, no smartblender', mods = {'mirror','softshuffle','smartblender','supershuffle'} }
 ModsMaster.Hide = 			{ modlist = {'Hide Targets','Hide Judgments','Hide Background'}, default ='no dark,no blind,no cover', mods = {'dark','blind','cover'} }
 ModsMaster.Accel =			{ modlist = {'Accel','Decel','Wave','Boomerang','Expand','Bump'}, default = 'no boost,no brake,no wave,no boomerang,no expand,no bumpy', mods = {'Boost','Brake','Wave','Boomerang','Expand','Bumpy'} }
 ModsMaster.Scroll = 		{ modlist = {'Reverse','Split','Alternate','Cross','Centered'}, default = 'no reverse,no split,no alternate,no cross,no centered' }
 ModsMaster.Effect = 		{ modlist = {'Drunk','Dizzy','Flip','Invert';'Tornado','Tipsy','Beat'}, default = 'no drunk,no dizzy,no flip,no invert,no tornado,no tipsy,no beat, no big', mods = {'drunk','dizzy','flip','invert','60% tornado','tipsy','beat'} }
 ModsMaster.Appearance = 	{ modlist = {'Sudden','Hidden','Blink','Stealth'}, default ='no hidden,no sudden,no blink,no stealth' }
-ModsMaster.Handicap = 		{ modlist = {'No Mines','No Rolls','No Holds','No Hands','No Jumps','No Stretch'}, default ='no nomines,no noholds,no norolls,no nohands,no nojumps,no nostretch', mods = {'nomines','norolls','noholds','nohands','nojumps','nostretch'} } 
+ModsMaster.Handicap = 		{ modlist = {'No Mines','No Rolls','No Holds','No Hands','No Jumps','No Stretch'}, default ='no nomines,no noholds,no norolls,no nohands,no nojumps,no nostretch', mods = {'nomines','norolls','noholds','nohands','nojumps','nostretch'} }
 ModsMaster.InsertTaps =		{ name = 'Insert', modlist = {'Little','Big','Quick','Skippy','Echo','Wide','Stomp'}, default = 'no little,no big,no quick,no skippy,no echo,no stomp,no wide', mods = {'Little','Big','Quick','Skippy','Echo','Wide','Stomp'} }
 ModsMaster.InsertOther =	{ name = 'Other', modlist = {'Planted','Floored','Twister','Mines'}, default = 'no planted,no floored,no twister,no mines' }
 
@@ -997,8 +997,8 @@ end
 
 -- have clock track larger time
 -- if second is 1 higher but ms is still within range, neither increment or reset. Make some indication of second increase
--- if this happens twice in a row, guarantee 
--- on negative 
+-- if this happens twice in a row, guarantee
+-- on negative
 
 SliderDisplayFunction = { }
 function SliderOption(name,move,display,share)
@@ -1140,7 +1140,7 @@ end
 
 function PlayModeType()
 	local t = OptionRowBase('Play Mode Type',{'Stages','Timer'})
-	t.OneChoiceForAllPlayers = true 
+	t.OneChoiceForAllPlayers = true
 	t.LoadSelections = function(self, list) list[2] = Profile(0).TimedSets; list[1] = not list[2] end
 	t.SaveSelections = function(self, list) Profile(0).TimedSets = list[2] end
 	CheckProfile.TimedSets = Profile(0).TimedSets
@@ -1173,7 +1173,7 @@ function CompareOption()
 	for pn=1,2 do if ModCustom.Compare[pn] > table.getn(t.Choices) then ModCustom.Compare[pn] = 2 end end
 	return t
 end
-function MeasureOption() 
+function MeasureOption()
 	local t = CustomMod('Measure Count','Measure',{ 'Off' , 'All' } )
 	for i,v in ipairs(ModsMaster.Measure.modlist) do if i > 2 then if v == 32 or v == 192 then table.insert(t.Choices,v..'nds') else table.insert(t.Choices,v..'ths') end end end
 	return t
@@ -1224,19 +1224,19 @@ function SurroundLife()
 		meter:GetChild('Frame'):zoom(0)
 		meter:GetChild('Background'):zoom(0)
 		meter:y(SCREEN_CENTER_Y+lifeBarSizeAdd.OffsetY) meter:zoomy((SCREEN_HEIGHT+lifeBarSizeAdd.Height)/height)
-		if GAMESTATE:PlayerUsingBothSides() or ( GAMESTATE:GetNumPlayersEnabled() == 1 and GetPref('SoloSingle') ) then 
-			meter:x(SCREEN_CENTER_X) 
+		if GAMESTATE:PlayerUsingBothSides() or ( GAMESTATE:GetNumPlayersEnabled() == 1 and GetPref('SoloSingle') ) then
+			meter:x(SCREEN_CENTER_X)
 			meter:zoomx((SCREEN_WIDTH+lifeBarSizeAdd.Width)/width)
 			lifeNormal[pn]:Load(ThemeFile('doublebar.png')); lifeNormal[pn]:diffuse(0.2,0.2,0.2,1)
 			lifeHot[pn]:Load(ThemeFile('doublebar.png')); lifeHot[pn]:diffuse(0.2,0.2,0.2,1)
 		else
-			meter:x(SCREEN_CENTER_X+((SCREEN_WIDTH*320/640)+lifeBarSizeAdd.OffsetX)*(pn-1.5)) 
+			meter:x(SCREEN_CENTER_X+((SCREEN_WIDTH*320/640)+lifeBarSizeAdd.OffsetX)*(pn-1.5))
 			meter:zoomx((SCREEN_WIDTH+lifeBarSizeAdd.Width)/2/width)
 			lifeNormal[pn]:Load(ThemeFile('white.png')); lifeNormal[pn]:diffuse(0.2,0.2,0.2,1)
 			lifeHot[pn]:Load(ThemeFile('white.png')); lifeHot[pn]:diffuse(0.2,0.2,0.2,1)
-			if pn == 1 then 
+			if pn == 1 then
 				lifeNormal[pn]:fadebottom(0.8) lifeHot[pn]:fadebottom(0.8)
-			else 
+			else
 				lifeNormal[pn]:fadetop(0.8) lifeHot[pn]:fadetop(0.8)
 			end
 		end
@@ -1311,9 +1311,9 @@ function DifficultyListRow(self,k,t,pn)
 	local n = minFeet or (not minFeet and 0)
 	local z = feetBaseZoom or (not feetBaseZoo and 1)
 	local d = {}
-	
+
 	self:stopeffect()
-	
+
 	if Player(1) then d[1] = k+listPointer[1]-listPointerY[1] else d[1] = 0 end
 	if Player(2) then d[2] = k+listPointer[2]-listPointerY[2] else d[2] = 0 end
 	if not GAMESTATE:GetCurrentSong() then
@@ -1410,16 +1410,16 @@ function FrameCapture(self) -- I had a simpler version which checked parent, but
 	for j,v in ipairs(frameIgnore) do if v == self then return true end end
 
 	if captureIndex == 1 then -- option rows, cursors, and line highlights
- 
+
 		if IsType(self,'ActorFrame') then
 			if IsType(self:GetChild(''),'ActorFrame') then table.insert(optionRow,self:GetChild('')) self:propagate(1) self:GetChild(''):propagate(1) end
 			if IsType(self:GetChild(''),'Sprite') then table.insert(optionCursor,self) table.insert(optionCursorSprite,{}) self:propagate(1) end
 		elseif IsType(self,'Sprite') then
 			table.insert(optionHighlight,self)
 		end
-	 
+
 	elseif captureIndex == 2 then -- cursor sprites, title and item text, and underlines
- 
+
 		if IsType(self,'Sprite') then
 			for j,v in ipairs(optionCursorSprite) do if not v[3] then table.insert(v,self) table.insert(frameIgnore,self) return end end
 			table.insert(optionRowText,{}) -- This will be the Bullets, one per option row, and they come before the text.
@@ -1429,7 +1429,7 @@ function FrameCapture(self) -- I had a simpler version which checked parent, but
 		elseif IsType(self,'ActorFrame') and self:GetNumChildren() == 3 then
 			table.insert(optionUnderlineSprite,{Row = table.getn(optionRowText)}) self:propagate(1)
 		end
-	 
+
 	elseif captureIndex == 3 then  -- underline sprites
 		Screen():GetChild('Frame'):propagate(0)
 		for j,v in ipairs(optionUnderlineSprite) do if not v[3] then table.insert(v,self) if v[3] then InitializeOptionRow(j) end return end end
@@ -1451,10 +1451,10 @@ function SetOptionRow(row,c) -- If c is true this will not adjust cursor size. U
 
 	local r = row;
 	local name = row;
-   
+
 	if type(row) == 'string' then
 		r = optionRowTextCache[row]
-		if THEMED_TITLES then r = optionRowTextCache[THEME:GetMetric("OptionTitles",name)] end	
+		if THEMED_TITLES then r = optionRowTextCache[THEME:GetMetric("OptionTitles",name)] end
 	else
 		name = optionRowText[r][1]:GetText()
 	end
@@ -1494,8 +1494,8 @@ function IsTimedSet() return not GAMESTATE:IsCourseMode() and Profile(0).TimedSe
 
 TimedSet = { }
 TimedSet.Divider = ' / '
-TimedSet.Reset = function() 
-	TimedSet.Start = Clock(); 
+TimedSet.Reset = function()
+	TimedSet.Start = Clock();
 	if ( Profile(0).SessionTimer or 0 ) > 0 then
 		TimedSet.End = TimedSet.Start + Profile(0).SessionTimer
 		TimedSet.CutOff = TimedSet.End + Profile(0).CutOffTime
@@ -1506,18 +1506,18 @@ end
 
 TimedSet.Display = function(self,t,f)
 	local time = t or Clock()
-	
+
 	local stop = ( f or TimedSet.End )
-	if stop then 
+	if stop then
 		local length = ( f or ( TimedSet.End - TimedSet.Start ) )
 		time = stop - time
 		time = SecondsToMSS(time) .. TimedSet.Divider .. SecondsToMSS( length )
 	else
 		time = SecondsToMSS( time - TimedSet.Start )
 	end
-	
+
 	self:settext(time)
-	
+
 end
 
 TimedSet.Timer = function(self)
@@ -1536,7 +1536,7 @@ TimedSet.Timer = function(self)
 		-- Class 1 == gameplay, end game when CutOff time ends
 		if TimedSet.Class == 1 then
 			TimedSet.GameplayTime = Clock()
-			if time <= 0 then 
+			if time <= 0 then
 				ApplyMod('FailImmediate',1)
 				self:diffuse(1,0,0,1)
 				TimedSet.Display(self,-time,Profile(0).CutOffTime)
@@ -1556,15 +1556,15 @@ TimedSet.Timer = function(self)
 		end
 
 	end
-	
+
 	self:sleep(1)
 	self:queuecommand('Timer')
-	
+
 end
 
 function SaveProfile(self)
 	if not CheckProfile then return end
-	
+
 	local bSave = false
 	for i,v in pairs( CheckProfile ) do
 		if type(v) == "table" then
@@ -1575,7 +1575,7 @@ function SaveProfile(self)
 			if Profile(0)[i] ~= v then bSave = true end
 		end
 	end
-	
+
 	if bSave then
 		BM('SaveProfile')
 		self:queuecommand("SaveProfile")

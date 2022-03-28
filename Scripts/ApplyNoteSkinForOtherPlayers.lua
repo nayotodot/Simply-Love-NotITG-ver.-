@@ -14,7 +14,7 @@
 -- Condition3=GAMESTATE:IsEventMode()
 -- Condition4=true
 -- NextScreen1=mod,clearall;applydefaultoptions;screen,ScreenStage
--- NextScreen2=lua,ApplyNoteSkinForOtherPlayers;mod,FailImmediate;screen,ScreenStage
+-- NextScreen2=lua,ApplyNoteSkinForOtherPlayers;screen,ScreenStage;mod,FailImmediate
 -- NextScreen3=lua,ApplyNoteSkinForOtherPlayers;screen,ScreenStage
 -- NextScreen4=lua,ApplyNoteSkinForOtherPlayers;screen,ScreenStage
 -- ```
@@ -24,7 +24,9 @@ function ApplyNoteSkinForOtherPlayers()
 		local NoteSkins = GAMESTATE:GetCurrentNoteSkins();
 		for pn = 3,8 do
 			local index = (pn-1) % 2 + 1;
-			GAMESTATE:ApplyModifiers( NoteSkins[index], pn );
+			if NoteSkins[index] then
+				GAMESTATE:ApplyModifiers( NoteSkins[index], pn );
+			end
 		end
 	end
 end

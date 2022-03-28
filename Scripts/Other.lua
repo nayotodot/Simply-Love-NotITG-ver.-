@@ -25,12 +25,11 @@ function ModeColor(self) local a = self:getaux(); a = math.mod(a+6,12) self:aux(
 function ModeColorOn(self) self:z(0) if self:getaux() < 0 then self:diffuse(1,1,1,1) else self:queuecommand('Loop') end end
 function ModeColorOff(self) self:diffuse(0.20,0.24,0.26,1) self:z(1) end
 
-File = 'loveheart'
-function BGShape() 
-	if not BGnum then BGnum = 1 end
-	path = THEME:GetPath( EC_BGANIMATIONS,'','_shared background images')
-	path = path .. '/' .. File
-	return path
+local File = 'basketball';
+function BGShape()
+	path = THEME:GetPath( EC_BGANIMATIONS,'','_shared background images');
+	path = path .. '/' .. File;
+	return path;
 end
 
 function DifficultyListCommand(self,t) i = self:getaux() self:y((i-1)*(19.3)) self:shadowlength(0) if t == 'meter' then self:x(-16) self:zoom(.28) else self:horizalign('left') end DifficultyListRow(self,i,t) end
@@ -61,7 +60,7 @@ function StyleIcon()
 	i = SCREENMAN:GetTopScreen():GetChild('StyleIcon')
 	i:Load(path)
 end
-	
+
 function StyleScrollerX()
 	if StyleChoices() == "1,2" then return SCREEN_CENTER_X+120 end
 	if StyleChoices() == "1,2,3" then return SCREEN_CENTER_X+65 end
@@ -116,7 +115,7 @@ function GetCreditsText()
 	local song = GAMESTATE:GetCurrentSong()
 	if not song then return "ALALALA" end
 
-	return 
+	return
 		song:GetDisplayFullTitle().."\n"..
 		song:GetDisplayArtist().."\n"..
 		GetStepsDescriptionTextP1().."\n"..
@@ -124,7 +123,7 @@ function GetCreditsText()
 end
 
 function StopCourseEarly()
-	-- Stop gameplay between songs in Fitess: Random Endless if all players have 
+	-- Stop gameplay between songs in Fitess: Random Endless if all players have
 	-- completed their goals.
 	if not GAMESTATE:GetEnv("Workout") then return "0" end
 	if GAMESTATE:GetPlayMode() ~= PLAY_MODE_ENDLESS then return "0" end
@@ -138,16 +137,16 @@ end
 function SetDifficultyFrameFromSteps( Actor, pn )
 	Trace( "SetDifficultyFrameFromSteps" )
 	local steps = GAMESTATE:GetCurrentSteps( pn );
-	if steps then 
-		Actor:setstate(steps:GetDifficulty()) 
+	if steps then
+		Actor:setstate(steps:GetDifficulty())
 	end
 end
 
 function SetDifficultyFrameFromGameState( Actor, pn )
 	Trace( "SetDifficultyFrameFromGameState" )
 	local trail = GAMESTATE:GetCurrentTrail( pn );
-	if trail then 
-		Actor:setstate(trail:GetDifficulty()) 
+	if trail then
+		Actor:setstate(trail:GetDifficulty())
 	else
 		SetDifficultyFrameFromSteps( Actor, pn )
 	end
@@ -188,11 +187,11 @@ end
 
 function GetEditStepsText()
 	local steps = GAMESTATE:GetCurrentSteps(PLAYER_1)
-	if steps == nil then 
+	if steps == nil then
 		return ""
-	elseif steps:GetDifficulty() == DIFFICULTY_EDIT then 
+	elseif steps:GetDifficulty() == DIFFICULTY_EDIT then
 		return steps:GetDescription()
-	else 
+	else
 		return DifficultyToThemedString(steps:GetDifficulty())
 	end
 end
@@ -225,7 +224,7 @@ function SetColorFromMeterString( self )
 	elseif i <= 9 then cmd = "Difficult"
 	else cmd = "Challenge"
 	end
-	
+
 	self:playcommand( "Set" .. cmd .. "Course" )
 end
 
@@ -253,25 +252,25 @@ end
 function Get2PlayerJoinMessage()
 	if not GAMESTATE:PlayersCanJoin() then return "" end
 	if GAMESTATE:GetCoinMode()==COIN_MODE_FREE then return "2 Player mode available" end
-	
+
 	local numSidesNotJoined = NUM_PLAYERS - GAMESTATE:GetNumSidesJoined()
-	if GAMESTATE:GetPremium() == PREMIUM_JOINT then numSidesNotJoined = numSidesNotJoined - 1 end	
+	if GAMESTATE:GetPremium() == PREMIUM_JOINT then numSidesNotJoined = numSidesNotJoined - 1 end
 	local coinsRequiredToJoinRest = numSidesNotJoined * PREFSMAN:GetPreference("CoinsPerCredit")
 	local remaining = coinsRequiredToJoinRest - GAMESTATE:GetCoins();
-		
+
 	if remaining <= 0 then return "2 Player mode available" end
-	
+
 	local s = "For 2 Players, insert " .. remaining .. " more coin"
 	if remaining > 1 then s = s.."s" end
 	return s
 end
 
-function Spin(self) 
+function Spin(self)
 	r = math.min(math.random(3,51),36)
-	s = math.random()*7+1 
-	z = self:GetZ();  
-	l = r/36; 
-	if z >= 36 then  
+	s = math.random()*7+1
+	z = self:GetZ();
+	l = r/36;
+	if z >= 36 then
 		z = z-36
 		self:z(z)
 		self:rotationz(z*10)
