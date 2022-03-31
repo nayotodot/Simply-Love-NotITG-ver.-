@@ -20,13 +20,9 @@
 -- ```
 
 function ApplyNoteSkinForOtherPlayers()
-	if GameState.GetCurrentNoteSkins and GameState.ApplyModifiers then
-		local NoteSkins = GAMESTATE:GetCurrentNoteSkins();
-		for pn = 3,8 do
-			local index = (pn-1) % 2 + 1;
-			if NoteSkins[index] then
-				GAMESTATE:ApplyModifiers( NoteSkins[index], pn );
-			end
+	if GameState.ApplyModifiers then
+		for pn = 1,8 do
+			GAMESTATE:ApplyModifiers( "Shaq", pn );
 		end
 	end
 end
