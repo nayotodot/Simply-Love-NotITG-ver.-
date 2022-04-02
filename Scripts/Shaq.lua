@@ -1,5 +1,207 @@
 local Items = setmetatable({},{ __mode = "k" });
 local ShaqTitles = {
+	-- WinDEU Hates You
+	["EVO66"] = "NBA66",
+	["Kan Kan"] = "Shaq Shaq",
+	["Robotix"] = "Shaqtix",
+	["Sugarkill X"] = "Sugarshaq X",
+
+	-- WinDEU Hates You The Musical
+	["Beloved Tomboyish Girl"] = "Beshaqd Tomboyish Girl",
+	["Boundary"] = "Shaqndary",
+	["Brightness Darkness"] = "Brightness Shaqness",
+	["Educating the ITG Community"] = "Educating the NBA Community",
+	["Nuclear Fusion"] = "Shaqlear Fusion",
+	["Who You Thought was Evidently Me"] = "Who You Throwght was Evidently Me",
+
+	-- WinDEU Hates You The Movie
+	["12 Little Fragments of Silence"] = "12 Little Fragments of Shaqnce",
+	["Necrofantasia"] = "Necroshantasia",
+	["Printer Jam"] = "Basketball Jam",
+	["Secret Area"] = "Secret Shaq",
+	["Voyage 1969"] = "Voyage 1972",
+	["WaterCube"] = "WaterShaq",
+
+	-- WinDEU Hates You Forever
+	["Border Of Life"] = "Border Of Shaq",
+	["Floating Darkness"] = "Floating Shaqness",
+	["Lawn Wake XI"] = "Lawn Shaq XI",
+	["Mars War 3"] = "Shaq War 3",
+	["Sebben Crudele"] = "Shaqen Crudele",
+	["The Detonator"] = "The Shaqnator",
+
+	-- WinDEU Hates You Infinity +1
+	["Desire Drive"] = "Desire Shaq",
+	["Futatsuiwa From Sado"] = "Futatsuiwa From Shaq",
+	["Hard Weak Hard Magic"] = "Hard Weak Hard Shaq",
+	["Model DD398"] = "Shaq DD398",
+	["Saber Wing"] = "Shaqer Wing",
+	["Scarlet Heaven Of Delays"] = "Shaqlet Heaven Of Delays",
+
+	-- WinDEU Loves You The Redemption
+	["nekosogi Destruction"] = "nekosogi Three-peat",
+	["On the bounce"] = "On the Shaq",
+	["P.A.R.T.Y"] = "D.A.D.D.Y",
+	["Perfect Cherry Storm"] = "Perfect Layup Storm",
+	["Return"] = "Reshaq",
+	["V.L.S.I."] = "S.H.A.Q.",
+
+	-- WinDEU Hates You 5EVR
+	["Bad Maniacs"] = "Shaq Maniacs",
+	["Golden Slaughterer"] = "Golden Statewarriors",
+	["New Fluttershy"] = "New Shaqqershy",
+	["Sword Dance"] = "Shaq Dance",
+	["Wild Rush"] = "Wild Shaq",
+	["xb"] = "bb",
+
+	-- WinDEU Hates You IROOT
+	["Absurd Gaff"] = "Absurd Shaq",
+	["Chronon"] = "Shaqnon",
+	["Eureka"] = "Shaqreka",
+	["Past the bolted door"] = "Past the kunfu shaq",
+	["Pink Magic"] = "Shaq Magic",
+	["Space Diver Tama"] = "Space Diver Shaq",
+
+	-- WinDEU Hates You JKINE (Fall 2013 Side Tournaments)
+	["Beat The Ghost"] = "Beat The Shaq",
+	["Option"] = "Shaqtion",
+	["Princess of Nightmare"] = "Shaqcess of Nightmare",
+	["The Little Toy Shop"] = "The Little Toy Shaq",
+	["The Messenger 2012"] = "The Shaqsenger 1992",
+	["The Skies Are Not Enough"] = "The Shaqs Are Not Enough",
+
+	-- WinDEU Hates You 401K
+	["Fuck Away Now"] = "Shaq Away Now",
+	["Haunted House"] = "Haunted Shaq",
+	["Meteorize"] = "Meteoshaq",
+	["Now is a Dull Party"] = "Now is a Dunk Party",
+	["Seismo"] = "Shaqsmo",
+	["Sick"] = "Shaq",
+
+	-- WinDEU Hates You 2020
+	["[0] Nightlife"] = "[0] Shaqlife",
+	["[1] Jack In The Box"] = "[1] Jack In The Shaq",
+	["[2] CHAOS Terror-Tech Mix"] = "[2] SHAQOS Terror-Tech Mix",
+	["[3] Into The Madness"] = "[3] Into The Shaqness",
+	["[4] Rampage Rag"] = "[4] Rampage Shaq",
+	["[5] Necroxis Girl"] = "[5] Necroxis Shaq",
+	["[6] Chariot + Invisible Frenzy"] = "[6] Shaqiot + Invisible Shaqnzy",
+
+	-- UKSRT
+	["CREDITS - LAC5"] = "SHAQS - LAC5",
+	["DRAGONLADY - LAC5"] = "SHAQNLADY - LAC5",
+	["Karate Man - LAC5"] = "Kung-Fu Man - LAC5",
+	["Saitama 2000 - LAC5"] = "Shaqtama 2000 - LAC5",
+	["Speed Highway - LAC5"] = "Shaqeed Highway - LAC5",
+	["Titanic Away! - LAC5"] = "Titanic Shaqy! - LAC5",
+
+	-- UKSRT 2
+	["ALCON12 - Air Rally"] = "ALCON12 - Air Shally",
+	["Apple Butter"] = "Shaqqle Butter",
+	["Bamboo on Bamboo"] = "Shaboo on Shaboo",
+	["ALCON12 - Credits"] = "ALCON12 - Shaqs",
+	["ALCON12 - Fillbots"] = "ALCON12 - Fillshaqs",
+	["ALCON12 - Flugel"] = "ALCON12 - Shaqugel",
+	["ALCON12 - High Speed Peas"] = "ALCON12 - High Shaqeed Peas",
+	["ALCON12 - GIRIGILI"] = "ALCON12 - SHAQSHAQ",
+	["ALCON12 - Karate Man 2"] = "ALCON12 - Kung-Fu Man 2",
+	["ALCON12 - NEGATOR"] = "ALCON12 - SHAQTOR",
+	["otome"] = "oshaq",
+	["Quicksand Storm"] = "Quickshaq Storm",
+	["ALCON12 - Shun"] = "ALCON12 - Shaqn",
+	["ALCON12 - Sneaky Spirits"] = "ALCON12 - Shaky Spirits",
+	["ALCON12 - SON OF SUN"] = "ALCON12 - SON OF SHAQ",
+	["ALCON12 - Unified Chaos"] = "ALCON12 - Unified Shaqs",
+
+	-- UKSRT 3
+	["SRT3 - Credits"] = "SRT3 - Shaqs",
+	["SRT3 - Garden Heaven"] = "SRT3 - Garden Shaqen",
+	["SRT3 - Hard de Koneko"] = "SRT3 - Hard de Koshaq",
+	["SRT3 - Mata Saitama 2000"] = "SRT3 - Mata Shaqtama 2000",
+	["MAWARU RIDES AGAIN"] = "MAWARU SHAQS AGAIN",
+	["SRT3 - MIND of ATARAXIA"] = "SRT3 - MIND of SHAQRAXIA",
+	["Ninja Showdown"] = "Ninja Shaqdown",
+	["Nopeustesti"] = "Nopeusshaqi",
+	["SRT3 - Cycle of Rebirth"] = "SRT3 - Cycle of Reshaq",
+	["SRT3 - Night of the Undead Arrow"] = "SRT3 - Night of the Shaq Arrow",
+	["SRT3 - Yej or Nej"] = "SRT3 - Shaq or O'Neal",
+
+	-- UKSRT 4
+	["SRT4 - Hypergirl Battlesquad"] = "SRT4 - Hypershaq Battlesquad",
+	["SRT4 - Smooooch ^^ KN mix"] = "SRT4 - Shaqooooch ^^ KN mix",
+	["SRT4 - Octotoxin"] = "SRT4 - Shaqtotoxin",
+	["SRT4 - PID"] = "SRT4 - SHAQ",
+	["SRT4 - G-LOOP"] = "SRT4 - G-SHAQ",
+	["SRT4 - Boreas"] = "SRT4 - Shareas",
+	["SRT4 - Catch Me If You Can"] = "SRT4 - Dunk Me If You Can",
+	["SRT4 - Credits"] = "SRT4 - Shaqs",
+
+	-- UKSRT 5
+	["SRT5 - TAKE THE FUN"] = "SRT5 - TAKE THE SHAQ",
+	["SRT5 - Redraw Lots"] = "SRT5 - Redraw Shaqs",
+	["SRT5 - GLITTER"] = "SRT5 - SHAQTTER",
+	["We Like Pizza"] = "We Like Shaq",
+	["SRT5 - Return to Mars"] = "SRT5 - Return to Shaqs",
+	["SRT5 - HAELEQUIN"] = "SRT5 - HAELESHAQUIN",
+	["SRT5 - Macrocosm Stage"] = "SRT5 - Shaqrocosm Stage",
+	["SRT5 - Credits"] = "SRT5 - Shaqs",
+
+	-- UKSRT 6
+	["SRT6 - Sugar"] = "SRT6 - Shaqar",
+	["SRT6 - In Soviet Russia You Play A Russian Traditional Music For A Puzzler!"] = "SRT6 - In Soviet Shaqa You Play A Shaqan Traditional Music For A Puzzler!",
+	["SRT6 - Princess Mimi's Game Corner"] = "SRT6 - Princess Shaq's Game Corner",
+	["SRT6 - Last Bank"] = "SRT6 - Last Dunk",
+	["SRT6 - Parallax View"] = "SRT6 - Shaqllax View",
+	["SRT6 - Credits"] = "SRT6 - Shaqs",
+	["Ninja Showdown Super Multiplayer Edition"] = "Ninja Shaqdown Super Multiplayer Edition",
+
+	-- UKSRT 7
+	["SRT7 - Shoot 'Em Up"] = "SRT7 - Dunk Shoot 'Em Up",
+	["SRT7 - InfiniteSpace"] = "SRT7 - InfiniteShaq",
+	["MAWARU! SETSUGETSUKA!"] = "MAWARU! SHAQGETSUKA!",
+	["SRT7 - Teknopathetic"] = "SRT7 - Shaqnopathetic",
+	["SRT7 - Pernicious Deed"] = "SRT7 - Pernicious Shaq",
+	["SRT7 - The Sky of Sadness"] = "SRT7 - The Sky of Shaqness",
+	["SRT7 - Chancellor Cuphea's Quality Fun Time"] = "SRT7 - Chancellor Shaq's Quality Fun Time",
+	["SRT7 - Credits"] = "SRT7 - Shaqs",
+	["All You Can Stream Buffet"] = "All You Can Slam Dunk",
+
+	-- UKSRT 7.3
+	["SRT - Konga Conga Kappa"] = "SRT - Konga Shaqa Kappa",
+	["SRT - Curl"] = "SRT - Shaqurl",
+	["SRT - Tactical Arrow Stomping Action"] = "SRT - Tactical Shaq Stomping Action",
+	["SRT - Machine Gun"] = "SRT - Machine Shaq",
+	["SRT - Sakuramichi Overdrive"] = "SRT - Shaqramichi Overdrive",
+
+	-- UKSRT 8
+	["SRT8 - Sort Game"] = "SRT8 - Shaq Game",
+	["SRT8 - kioku [unconnected]"] = "SRT8 - shaoku [unconnected]",
+	["MAWARU SIMULATOR 2016"] = "MAWARU SHAQLATOR 2016",
+	["SRT8 - 10-1"] = "SRT8 - 7f-1in",
+	["SRT8 - tang pong"] = "SRT8 - shaq pong",
+	["SRT8 - get fucked"] = "SRT8 - get shaqed",
+	["SRT8 - Matoi"] = "SRT8 - Shatoi",
+	["SRT8 - Flyin to your Heart"] = "SRT8 - Flyin to your Shaq",
+
+	-- UKSRT 9
+	["SRT9 - Defrag Dance"] = "SRT9 - Defrag Dunk",
+	["SRT9 - VOLT"] = "SRT9 - SHAQ",
+	["SRT9 - 131"] = "SRT9 - 325lb",
+	["SRT9 - line-delta -UKSRT Ver.-"] = "SRT9 - line-shaq -UKSRT Ver.-",
+	["SRT9 - Dying Breath of Stokesia"] = "SRT9 - Dying Breath of Shaqkesia",
+	["SRT9 - get fucked 2"] = "SRT9 - get shaqed 2",
+	["SRT9 - Credits EX -UKSRT Ver.-"] = "SRT9 - Shaqs EX -UKSRT Ver.-",
+
+	-- UKSRT X
+	["SRTX - Monster Strike Medley"] = "SRTX - Shaqster Strike Medley",
+	["SRTX - SUPER REFLEX"] = "SRTX - SUPER SHAQLEX",
+	["MAWARU GOLD"] = "MAWARU SHAQLD",
+	["SRTX - Why do you hate me?"] = "SRTX - Why do you shaq me?",
+	["SRTX - You are the Miserable"] = "SRTX - You are the Shaqrable",
+	["SRTX - GOLDEN RULE"] = "SRTX - BASKET RULE",
+	["SRTX - Doppelganger"] = "SRTX - Shaqqelganger",
+	["SRTX - Thread of Fate Manipulator"] = "SRTX - Thread of Shaq Manipulator",
+
 	-- Mods Boot Camp
 	["A Moon of Caral (Verdammt Remix)"] = "A Moon of Shaqal (Verdammt Remix)",
 	["AΩ"] = "ShaqΩ",
@@ -104,6 +306,46 @@ local ShaqTitles = {
 	["Voltex taisou daiichi"] = "Shaq taisou daiichi",
 	["We Are The Scarlet"] = "We Are The Shaquille",
 	["Wish Upon Twin Stars"] = "Wish Shaq Twin Stars",
+
+	-- MODSTER MASH 3
+	["MM3 - Blue Star Parade"] = "MM3 - Blue Shaq Parade",
+	["MM3 - Devotion"] = "MM3 - Shavotion",
+	["MM3 - Dreamsters"] = "MM3 - Dreamshaq",
+	["MM3 - Hotaru"] = "MM3 - Shaqru",
+	["MM3 - MAWARU and the Magician's Curse"] = "MM3 - MAWARU and the Shaq's Curse",
+	["MM3 - Nisemono"] = "MM3 - Shaqmono",
+	["MM3 - Sakura Fubuki"] = "MM3 - Shaqra Fubuki",
+
+	-- Celestial Harbor
+	["After all, noone can leave behind anything"] = "After shaq, noone can leave behind anything",
+	["Aozora no Rhapsody (TV Size)"] = "Shaq no Rhapsody (TV Size)",
+	["Dark Sheep"] = "Shaq Sheep",
+	["disperagioia"] = "shaqperagioia",
+	["perthed again (yamabom remix)"] = "perthed shaqin (yamabom remix)",
+	["Pink Fluffy Unicorns Dancing on Rainbows"] = "Pink Fluffy Shaqs Dancing on Rainbows",
+	["Routing"] = "Shaqing",
+	["Villain Virus"] = "Villain Shaqs",
+
+	-- NJSRT1
+	["Synchronization"] = "Shanchronization",
+	["Yggdrasil Leaf"] = "Yggdrasil Shaq",
+	["Railgun Roulette"] = "Railgun Shaqlette",
+	["「descent」"] = "「shaqcent」",
+	["Antechamber"] = "Anteshaqber",
+	["LUX MORTIS"] = "LUX SHAQTIS",
+
+	-- NJSRT1 (Translit)
+	["descent"] = "shaqcent",
+
+	-- Misfits in the Prairie
+	["Fly far bounce"] = "Fly far shaqnce",
+	["Monkey Business (lapix remix)"] = "Shaqey Business (lapix remix)",
+	["StrayedCatz"] = "StrayedShaz",
+	["Grand Chariot"] = "Grand Shariot",
+	["Neutrino"] = "Neushaqno",
+	["Adularia"] = "Adushaqa",
+	["Standoff in the Twilight"] = "Standoff in the Shaqlight",
+	["In the Breeze"] = "In the Shaq",
 
 	-- OISRT
 	["\"Schall\" we step?"] = "\"Shaq\" we step?",
