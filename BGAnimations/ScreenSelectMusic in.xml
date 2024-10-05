@@ -1,10 +1,10 @@
 <ActorFrame><children>
-	<Layer 
+	<Layer
 		Condition="loadMusic == 1"
 		File="_loading in"
 		Command="%function() loadMusic = 0 end"
 	/>
-	<Layer 
+	<Layer
 		Condition="loadMusic == 0"
 		File="_fade in"
 	/>

@@ -23,7 +23,7 @@ end
 -- but this will save us some headaches regardless.
 local Resolutions =
 {
-	["4:3"] = 
+	["4:3"] =
 	{
 		Ratio = 1.333333,
 		Res = { "512x384", "640x480", "800x600", "1024x768", "1152x864", "1280x1024", "1400x1050", "1600x1200" },
@@ -35,7 +35,7 @@ local Resolutions =
 		Res = { "720x480", "1000x600", "1280x800", "1440x900", "1600x1024" },
 	},
 
-	["16:9"] =	
+	["16:9"] =
 	{
 		Ratio = 1.777777,
 		Res = { "960x540", "1280x720", "1600x900", "1920x1080" },
@@ -70,16 +70,16 @@ local temp_ratio = FloatToRatio( PREFSMAN:GetPreference("DisplayAspectRatio") )
 local temp_float = RatioToFloat( temp_ratio )
 
 -- This function only sets a temporary ratio for the other table to pick up on
-function LuaSetAspectRatio()	
+function LuaSetAspectRatio()
 	-- build from all the key values of Resolutions
 	local Names = {}
 	for k,v in pairs(Resolutions) do table.insert(Names, k) end
-	
+
 	local function Load(self, list, pn)
 		for i=1,table.getn(Names) do
 			if fequ(temp_float, RatioToFloat(Names[i])) then list[i] = true return end
 		end
-	
+
 		list[1] = true;	-- default to 4:3
 	end
 
@@ -110,7 +110,7 @@ function LuaSetResolution( ratio )
 	-- Fill in with the values names of the appropriate Resolutions table
 	local Names = {}
 	for i=1,table.getn(Resolutions[ratio].Res) do table.insert(Names, Resolutions[ratio].Res[i]) end
-	
+
 	local curwidth = PREFSMAN:GetPreference( "DisplayWidth" )
 	local curheight = PREFSMAN:GetPreference( "DisplayHeight" )
 
@@ -139,7 +139,7 @@ function LuaSetResolution( ratio )
 				PREFSMAN:SetPreference( "DisplayHeight", height )
 				PREFSMAN:SetPreference( "DisplayAspectRatio", Resolutions[ratio].Ratio )
 				Debug( "New resolution: " .. width .. "x" .. height .. ", ratio " .. Resolutions[ratio].Ratio )
-				
+
 				DISPLAY:SetWindowPositionAndSize(0,0,width,height)
 
 				--GAMESTATE:DelayedGameCommand( "reloadtheme" )

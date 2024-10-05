@@ -8,7 +8,7 @@ function DefaultColor()
 	if Color() > 9 then return Color() end
 	return '0'..Color()
 end
-	
+
 function Color(c)
 	if not Profile(0) then return 1 end
 	if not Profile(0).Love then Profile(0).Love = { Color = 1 } end

@@ -6,10 +6,10 @@
 		SaveProfileMessageCommand="diffuse,0,0,0,1"
 	/>
 	<Layer
-		File="_wendy small" 
+		File="_wendy small"
 		Text="Saving Machine Profile"
-		OnCommand="x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y;zoom,0.6;diffusealpha,0" 
+		OnCommand="x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y;zoom,0.6;diffusealpha,0"
 		SaveProfileMessageCommand="diffusealpha,1"
 	/>
-	
+
 </children> </ActorFrame>

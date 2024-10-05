@@ -2,7 +2,7 @@
 	<Layer File="backstuff.png" Command="x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y-30"/>
 	<Layer Type="Quad"
 		OnCommand="diffuse,#1E282F59;stretchto,10,350,630,410"
-	/>	
+	/>
 	<Layer OnCommand="%function(self)
 			-- OpenITG scalable check
 			self:hidden(1)

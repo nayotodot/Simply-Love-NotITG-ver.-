@@ -9,24 +9,24 @@
 		<Layer
 			File="stepbubble.png"
 			InitCommand="x,52;y,-19;playcommand,Set"
-			SetCommand="%function(self) self:diffuse(BubbleColorRGB(PLAYER_1)) end" 
-			CurrentSongChangedMessageCommand="playcommand,Set" 
-			CurrentStepsP1ChangedMessageCommand="playcommand,Set" 
+			SetCommand="%function(self) self:diffuse(BubbleColorRGB(PLAYER_1)) end"
+			CurrentSongChangedMessageCommand="playcommand,Set"
+			CurrentStepsP1ChangedMessageCommand="playcommand,Set"
 		/>
-		<Layer 
+		<Layer
 			Type="BitmapText"
 			Condition="not GAMESTATE:IsCourseMode()"
 			Font="_misoreg small"
 			Text="STEPS"
 			OnCommand="y,-29;ShadowLength,0;diffuse,#000000;horizalign,right;zoom,0.5"
 		/>
-		<Layer 
+		<Layer
 		   Font="_misobold small"
-			Text="???" 
-			OnCommand="y,-29;x,5;zoom,0.5;shadowlength,0;horizalign,left;maxwidth,250" 
-			SetCommand="%function(self) self:settext(GetStepsDescriptionText(PLAYER_1)) self:diffuse(BubbleColorText(PLAYER_1)) end" 
-			CurrentSongChangedMessageCommand="playcommand,Set" 
-			CurrentStepsP1ChangedMessageCommand="playcommand,Set" 
+			Text="???"
+			OnCommand="y,-29;x,5;zoom,0.5;shadowlength,0;horizalign,left;maxwidth,250"
+			SetCommand="%function(self) self:settext(GetStepsDescriptionText(PLAYER_1)) self:diffuse(BubbleColorText(PLAYER_1)) end"
+			CurrentSongChangedMessageCommand="playcommand,Set"
+			CurrentStepsP1ChangedMessageCommand="playcommand,Set"
 		/>
 	</children></Layer>
 
@@ -40,19 +40,19 @@
 		<Layer
 			File="stepbubble.png"
 			InitCommand="x,-47;y,32;rotationz,180;playcommand,Set"
-			SetCommand="%function(self) self:diffuse(BubbleColorRGB(PLAYER_2)) end" 
-			CurrentSongChangedMessageCommand="playcommand,Set" 
-			CurrentStepsP2ChangedMessageCommand="playcommand,Set" 
+			SetCommand="%function(self) self:diffuse(BubbleColorRGB(PLAYER_2)) end"
+			CurrentSongChangedMessageCommand="playcommand,Set"
+			CurrentStepsP2ChangedMessageCommand="playcommand,Set"
 		/>
-		<Layer 
+		<Layer
 			Font="_misobold small"
-			Text="???" 
-			OnCommand="y,29;x,-5;zoom,0.5;shadowlength,0;horizalign,right;maxwidth,250;zoomx,0.5;zoomy,0.1;accelerate,0.3;zoom,0.5" 
-			SetCommand="%function(self) self:settext(GetStepsDescriptionText(PLAYER_2)) self:diffuse(BubbleColorText(PLAYER_2)) end" 
-			CurrentSongChangedMessageCommand="playcommand,Set" 
-			CurrentStepsP2ChangedMessageCommand="playcommand,Set" 
+			Text="???"
+			OnCommand="y,29;x,-5;zoom,0.5;shadowlength,0;horizalign,right;maxwidth,250;zoomx,0.5;zoomy,0.1;accelerate,0.3;zoom,0.5"
+			SetCommand="%function(self) self:settext(GetStepsDescriptionText(PLAYER_2)) self:diffuse(BubbleColorText(PLAYER_2)) end"
+			CurrentSongChangedMessageCommand="playcommand,Set"
+			CurrentStepsP2ChangedMessageCommand="playcommand,Set"
 		/>
-		<Layer 
+		<Layer
 			Type="BitmapText"
 			Condition="not GAMESTATE:IsCourseMode()"
 			Font="_misoreg small"
@@ -77,7 +77,7 @@
 	><children>
 		<Layer
 			File="@Path('Graphics','longverbubble.png')"
-			OnCommand="%function(self) self:diffuse(ColorRGB(-1)) end" 
+			OnCommand="%function(self) self:diffuse(ColorRGB(-1)) end"
 		/>
 		<Layer
 			Type="BitmapText"

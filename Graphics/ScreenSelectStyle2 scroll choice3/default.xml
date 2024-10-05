@@ -1,11 +1,11 @@
 <ActorFrame> <children>
-	<Layer 
+	<Layer
 		Type="ActorFrame"
 		Command="x,30"
 		GainFocusCommand="linear,0.2;zoom,1.4"
 		LoseFocusCommand="linear,0.2;zoom,0.7"
 	><children>
-		<Layer 
+		<Layer
 			Condition="game ~= 'techno'"
 			Type="ActorFrame"
 			Command="x,110"
@@ -26,7 +26,7 @@
 			/>
 
 		</children></Layer>
-		<Layer 
+		<Layer
 			Condition="game ~= 'techno'"
 			Type="ActorFrame"
 			Command="x,-110"

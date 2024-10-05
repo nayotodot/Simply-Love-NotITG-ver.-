@@ -14,16 +14,16 @@
 
 
 	</children></Layer>
-	<Layer 
+	<Layer
 		Type="Quad"
 		OnCommand="diffuse,#1E282F;stretchto,SCREEN_CENTER_X-139,41,SCREEN_CENTER_X+139,61;diffusealpha,0.85"
 	/>
 
-	<Layer 
+	<Layer
 		Condition="SongOptionsLabel() ~= ''"
 		Type="Quad"
 		OnCommand="diffuse,#1E282F;stretchto,SCREEN_CENTER_X-139,153,SCREEN_CENTER_X+139,170;diffusealpha,0.85"
-	/>	
+	/>
 	<Layer Type="ActorFrame"
 		Condition="not (GAMESTATE:GetCurrentSong() == SONGMAN:FindSong('In The Groove/Training1/'))"
 		OnCommand="x,SCREEN_CENTER_X;y,SCREEN_TOP+68"
@@ -37,7 +37,7 @@
 			CurrentSongChangedMessageCommand="queuecommand,Update"
 			UpdateCommand="%function(self) self:settext(GetSongName()) end"
 		/>
-		<Layer 
+		<Layer
 			Type="BitmapText"
 			Font="_misobold small"
 			OnCommand="y,87;zoom,.5;shadowlength,1;diffuse,#FFFFFF"
@@ -60,28 +60,28 @@
 			Class="DifficultyMeter"
 			Type="ScreenGameplay DifficultyMeterP1"
 			OnCommand="playcommand,Update"
-			UpdateCommand="%function(self) 
-					if GAMESTATE:GetCurrentTrail(PLAYER_1) then 
-						self:SetFromTrail(GAMESTATE:GetCurrentTrail(PLAYER_1)) 
+			UpdateCommand="%function(self)
+					if GAMESTATE:GetCurrentTrail(PLAYER_1) then
+						self:SetFromTrail(GAMESTATE:GetCurrentTrail(PLAYER_1))
 					else
 						self:SetFromSteps(GAMESTATE:GetCurrentSteps(PLAYER_1))
 					end
 					P1Difficulty = self:GetChild('Difficulty'):GetText()
 				end"
 		/>
-		<Layer 
+		<Layer
 			Font="_misobold small"
-			Text="???" 
-			OnCommand="x,25;y,2;zoom,0.4;shadowlength,0;horizalign,left;maxwidth,240;queuecommand,Set" 
-			SetCommand="%function(self) self:settext(P1Difficulty) end" 
-		/>		
-		<Layer 
+			Text="???"
+			OnCommand="x,25;y,2;zoom,0.4;shadowlength,0;horizalign,left;maxwidth,240;queuecommand,Set"
+			SetCommand="%function(self) self:settext(P1Difficulty) end"
+		/>
+		<Layer
 			Condition="not GAMESTATE:IsCourseMode()"
 			Font="_misobold small"
-			Text="???" 
-			OnCommand="x,25;y,-12;zoom,0.4;shadowlength,0;horizalign,left;maxwidth,240;queuecommand,Set" 
-			SetCommand="%function(self) self:settext(GetStepsDescriptionText(PLAYER_1)) end" 
-		/>		
+			Text="???"
+			OnCommand="x,25;y,-12;zoom,0.4;shadowlength,0;horizalign,left;maxwidth,240;queuecommand,Set"
+			SetCommand="%function(self) self:settext(GetStepsDescriptionText(PLAYER_1)) end"
+		/>
 	</children> </Layer>
 
 	<Layer Type="ActorFrame"
@@ -98,32 +98,32 @@
 			Class="DifficultyMeter"
 			Type="ScreenGameplay DifficultyMeterP2"
 			OnCommand="playcommand,Update"
-			UpdateCommand="%function(self) 
-					if GAMESTATE:GetCurrentTrail(PLAYER_2) then 
-						self:SetFromTrail(GAMESTATE:GetCurrentTrail(PLAYER_2)) 
+			UpdateCommand="%function(self)
+					if GAMESTATE:GetCurrentTrail(PLAYER_2) then
+						self:SetFromTrail(GAMESTATE:GetCurrentTrail(PLAYER_2))
 					else
 						self:SetFromSteps(GAMESTATE:GetCurrentSteps(PLAYER_2))
 					end
 					P2Difficulty = self:GetChild('Difficulty'):GetText()
 				end"
 		/>
-		<Layer 
+		<Layer
 			Font="_misobold small"
-			Text="???" 
-			OnCommand="x,-25;y,2;zoom,0.4;shadowlength,0;horizalign,right;maxwidth,240;queuecommand,Set" 
-			SetCommand="%function(self) self:settext(P2Difficulty) end" 
+			Text="???"
+			OnCommand="x,-25;y,2;zoom,0.4;shadowlength,0;horizalign,right;maxwidth,240;queuecommand,Set"
+			SetCommand="%function(self) self:settext(P2Difficulty) end"
 		/>
-		<Layer 
+		<Layer
 			Condition="not GAMESTATE:IsCourseMode()"
 			Font="_misobold small"
-			Text="???" 
-			OnCommand="x,-25;y,-12;zoom,0.4;shadowlength,0;horizalign,right;maxwidth,240;queuecommand,Set" 
-			SetCommand="%function(self) self:settext(GetStepsDescriptionText(PLAYER_2)) end" 
+			Text="???"
+			OnCommand="x,-25;y,-12;zoom,0.4;shadowlength,0;horizalign,right;maxwidth,240;queuecommand,Set"
+			SetCommand="%function(self) self:settext(GetStepsDescriptionText(PLAYER_2)) end"
 		/>
 	</children> </Layer>
-	
+
 	<Layer File="OffsetPlot" />
 	<Layer File="ScreenEvaluation widget pb" />
 	<!--Layer File="Couples" /-->
-	
+
 </children> </ActorFrame>

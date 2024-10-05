@@ -1,7 +1,7 @@
 <ActorFrame Condition="stitch'config'.ViewGC"><children>
     <Layer Type="Quad" InitCommand="horizalign,right;vertalign,bottom;x,SCREEN_WIDTH-5;y,SCREEN_HEIGHT-5;diffuse,0,0,0,0.5;effectperiod,1/0" OverlayReadyMessageCommand="%function(s) gc_info_quad = s end" />
-    <Layer Type="BitmapText" File="_eurostile outline" 
-        InitCommand="diffuse,0,1,0,1;horizalign,right;vertalign,bottom;shadowlength,0;x,SCREEN_WIDTH-10;y,SCREEN_HEIGHT-10;zoom,0.3;luaeffect,Update" 
+    <Layer Type="BitmapText" File="_eurostile outline"
+        InitCommand="diffuse,0,1,0,1;horizalign,right;vertalign,bottom;shadowlength,0;x,SCREEN_WIDTH-10;y,SCREEN_HEIGHT-10;zoom,0.3;luaeffect,Update"
         UpdateCommand="%(function()
             local prev = gcinfo()
             local red = 0

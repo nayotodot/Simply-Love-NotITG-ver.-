@@ -17,7 +17,7 @@
 				s=s..remainder..'/'..coinsPerCredit
 				self:settext(s)
 			end"
-		CoinInsertedMessageCommand="PlayCommand,Refresh"		
-		CoinModeChangedMessageCommand="PlayCommand,Refresh"		
+		CoinInsertedMessageCommand="PlayCommand,Refresh"
+		CoinModeChangedMessageCommand="PlayCommand,Refresh"
 	/>
 </children></ActorFrame>

@@ -6,7 +6,7 @@
     end"
 >
 <children>
-    <Layer 
+    <Layer
         Type="Quad"
         Name="DevBackgroud"
         OnCommand="horizalign,left;vertalign,top;diffuse,0,0.1,0,0.7"
@@ -17,7 +17,7 @@
         OnCommand="horizalign,left;vertalign,bottom;diffuse,0.9,1,0.9,1;zoom,0.6",
         Text="Sample text"
     />
-    <Layer 
+    <Layer
         Type="Quad"
         Name="DevInBg"
         OnCommand="horizalign,left;vertalign,bottom;diffuse,0,0.2,0,0.8"

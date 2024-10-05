@@ -10,7 +10,7 @@
 		<Layer Font="_wendy score" 			Text="ScoreP1"	InitCommand="x,-70;horizalign,right;zoom,.33;shadowlength,0;y,-15"	SetCommand="%function(self) self:settext(string.format('%01.2f',AllScores[k]['Score'][1])) if AllScores[k]['Fail'][1] then self:diffuse(1,0,0,1) end end"/>
 		<Layer Font="_wendywhite numbers" 	Text="MeterP1"	InitCommand="x,-70;horizalign,right;zoom,.2;shadowlength,0;y,5"		SetCommand="%function(self) self:settext(AllScores[k]['Steps'][1]:GetMeter()) self:diffuse(DifficultyColorRGB(AllScores[k]['Steps'][1]:GetDifficulty())) end"/>
 		<Layer Font="_misobold small" 		Text="DescrP1"	InitCommand="x,-70;horizalign,right;zoom,.35;shadowlength,0;y,14"	SetCommand="%function(self) self:settext(MaxLength(AllScores[k]['Steps'][1]:GetDescription(),19)) end"/>
-		
+
 		<ActorFrame SetCommand="%function() judgeIndex = 1; local pn = 1; function JudgeFunction(self) CommonEval(self,judgeIndex) self:x(-185) local s = AllScores[k]['Judge'][pn][judgeIndex] if judgeIndex <= 6 then s = string.gsub(s,' ','') self:diffuse(JudgmentColor(judgeIndex)) else self:diffuse(0.6,0.6,0.6,1) end self:settext(s) judgeIndex = judgeIndex + 1  end end" />
 		<Layer Font="ScreenEvaluation judge" Text="" SetCommand="%function(self) JudgeFunction(self) end" />
 		<Layer Font="ScreenEvaluation judge" Text="" SetCommand="%function(self) JudgeFunction(self) end" />
@@ -33,7 +33,7 @@
 		<Layer Font="ScreenEvaluation judge" Text="" SetCommand="%function(self) JudgeFunction(self) end" />
 		<Layer Font="ScreenEvaluation judge" Text="" SetCommand="%function(self) JudgeFunction(self) end" />
 		<Layer Font="ScreenEvaluation judge" Text="" SetCommand="%function(self) JudgeFunction(self) end" />
-		
+
 	</children></Layer>
-		
+
 </children></ActorFrame>

@@ -1,5 +1,5 @@
 <ActorFrame> <children>
-		
+
 <!--left pad
 
 	<Layer
@@ -13,12 +13,12 @@
 		<Layer
 			File="panel"
 			OnCommand="zoom,0.8;x,0;y,-75"
-		/>		
+		/>
 		<Layer
 			File="panel"
 			OnCommand="zoom,0.8;x,75;y,-75"
 		/>
-		
+
 
 		<Layer
 			File="panel"
@@ -27,13 +27,13 @@
 		<Layer
 			File="panel"
 			OnCommand="zoom,0.8;x,0;y,0"
-		/>		
+		/>
 		<Layer
 			File="panel"
 			OnCommand="zoom,0.8;x,75;y,0"
 		/>
 
-		
+
 		<Layer
 			File="panel"
 			OnCommand="zoom,0.8;x,-75;y,75"
@@ -41,16 +41,16 @@
 		<Layer
 			File="panel"
 			OnCommand="zoom,0.8;x,0;y,75"
-		/>		
+		/>
 		<Layer
 			File="panel"
 			OnCommand="zoom,0.8;x,75;y,75"
-		/>				
+		/>
 	</children></Layer>
 
 -->
-	
-<!--right pad	
+
+<!--right pad
 
 	<Layer
 		Type="ActorFrame"
@@ -63,12 +63,12 @@
 		<Layer
 			File="panel"
 			OnCommand="zoom,0.8;x,0;y,-75"
-		/>		
+		/>
 		<Layer
 			File="panel"
 			OnCommand="zoom,0.8;x,75;y,-75"
 		/>
-		
+
 
 		<Layer
 			File="panel"
@@ -77,13 +77,13 @@
 		<Layer
 			File="panel"
 			OnCommand="zoom,0.8;x,0;y,0"
-		/>		
+		/>
 		<Layer
 			File="panel"
 			OnCommand="zoom,0.8;x,75;y,0"
 		/>
 
-		
+
 		<Layer
 			File="panel"
 			OnCommand="zoom,0.8;x,-75;y,75"
@@ -91,14 +91,14 @@
 		<Layer
 			File="panel"
 			OnCommand="zoom,0.8;x,0;y,75"
-		/>		
+		/>
 		<Layer
 			File="panel"
 			OnCommand="zoom,0.8;x,75;y,75"
-		/>				
+		/>
 	</children></Layer>
 
--->	
-	
+-->
+
 	</children> </ActorFrame>
 

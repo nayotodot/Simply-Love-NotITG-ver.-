@@ -37,14 +37,14 @@ vec2 texCoord2imgCoord( vec2 uv )
 //float3 GrayscalePass( float4 vpos : SV_Position, float2 texcoord : TexCoord ) : SV_Target {
 void main(void)
 {
-	
+
 	float timer = time*0.5;
 	vec2 uv = imageCoord;
 	float xdist = 0;
 	float yspacing = 0.5;
-	
+
 	xdist = uv.x + amp*0.03*(sin((8*uv.y*(1/yspacing)) + (timer*8))*0.06);
-  
+
   vec4 tex = texture2D(sampler0, texCoord2imgCoord(vec2(xdist, uv.y)));
   vec3 col = lerp( tex.xyz, vec3(gray( tex.xyz )), howGray );
 

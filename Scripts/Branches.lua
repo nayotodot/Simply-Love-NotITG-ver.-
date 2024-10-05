@@ -19,10 +19,10 @@ function EvaluationNextScreen()
 
 	if GetPref('EventMode') then return SongSelectionScreen() end
 	if IsTimedSet() then
-		if Clock( TimedSet.End ) < 0 then 
+		if Clock( TimedSet.End ) < 0 then
 			return SongSelectionScreen()
 		else
-			return "ScreenNameEntryTraditional" 
+			return "ScreenNameEntryTraditional"
 		end
 	end
 	if AllFailed() or IsFinalStage() then return "ScreenNameEntryTraditional" end
@@ -30,21 +30,21 @@ function EvaluationNextScreen()
 end
 
 function GetGameplayNextScreen()
-	if GAMESTATE:IsSyncDataChanged() then 
+	if GAMESTATE:IsSyncDataChanged() then
 		return "ScreenSaveSync"
 	end
-		
+
 	-- Never show evaluation for training.
-	if GAMESTATE:GetCurrentSong():GetSongDir() == "Songs/In The Groove/Training1/" then 
-		if GAMESTATE:IsEventMode() then 
+	if GAMESTATE:GetCurrentSong():GetSongDir() == "Songs/In The Groove/Training1/" then
+		if GAMESTATE:IsEventMode() then
 			return SongSelectionScreen()
 		else
 			return EvaluationNextScreen()
 		end
 	else
-		return SelectEvaluationScreen() 
+		return SelectEvaluationScreen()
 	end
-	
+
 	return "GetGameplayNextScreen: YOU SHOULD NEVER GET HERE"
 end
 

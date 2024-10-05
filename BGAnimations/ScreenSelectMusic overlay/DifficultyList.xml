@@ -9,7 +9,7 @@
 		<Layer File="Difficulty Blank" InitCommand="aux,4;zoomy,feetBaseZoom;zoomx,feetBaseZoom*20;customtexturerect,0,0,20,1;queuecommand,Go" GoCommand="%function(self) DifficultyListCommand(self) end" />
 		<Layer File="Difficulty Blank" InitCommand="aux,5;zoomy,feetBaseZoom;zoomx,feetBaseZoom*20;customtexturerect,0,0,20,1;queuecommand,Go" GoCommand="%function(self) DifficultyListCommand(self) end" />
 
-		
+
 		<Layer File="@'DifficultyList'..Color()..' 1x8.png'" InitCommand="aux,1" UpdateCommand="%function(self) DifficultyListCommand(self,'feet') end" />
 		<Layer File="@'DifficultyList'..Color()..' 1x8.png'" InitCommand="aux,2" UpdateCommand="%function(self) DifficultyListCommand(self,'feet') end" />
 		<Layer File="@'DifficultyList'..Color()..' 1x8.png'" InitCommand="aux,3" UpdateCommand="%function(self) DifficultyListCommand(self,'feet') end" />

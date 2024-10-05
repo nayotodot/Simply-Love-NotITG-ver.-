@@ -1,5 +1,5 @@
 <ActorFrame> <children>
-	<Layer File="ScreenWithMenuElements header"/>	
+	<Layer File="ScreenWithMenuElements header"/>
 	<Layer
 		Type="BitmapText"
 		Text="PLAYER OPTIONS"

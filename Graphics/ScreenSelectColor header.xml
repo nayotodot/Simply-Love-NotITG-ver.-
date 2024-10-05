@@ -1,5 +1,5 @@
 <ActorFrame> <children>
-	<Layer Type="Quad" Command="diffuse,#FFFFFF00;stretchto,SCREEN_LEFT,SCREEN_TOP+32,SCREEN_RIGHT,SCREEN_TOP;linear,.5;diffuse,#FFFFFFA0"/>	
+	<Layer Type="Quad" Command="diffuse,#FFFFFF00;stretchto,SCREEN_LEFT,SCREEN_TOP+32,SCREEN_RIGHT,SCREEN_TOP;linear,.5;diffuse,#FFFFFFA0"/>
 	<Layer
 		Type="BitmapText"
 		Text="SELECT COLOR"

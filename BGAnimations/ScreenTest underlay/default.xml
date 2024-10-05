@@ -1,6 +1,6 @@
 <ActorFrame> <children>
 	<Layer Type="Quad" Command="stretchto,SCREEN_LEFT,SCREEN_TOP,SCREEN_RIGHT,SCREEN_BOTTOM;diffuse,.5,.5,.5,1" />
-	<Layer 
+	<Layer
 		Type="ActorFrame"
 		OnCommand="zoom,1;x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y"
 		GainFocusCommand="linear,0.2;zoom,1"

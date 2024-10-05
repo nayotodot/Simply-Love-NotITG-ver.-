@@ -2,14 +2,14 @@ function OptionsRowWeight()
 	local function IndexToPounds(i)
 		return i*5
 	end
-	
+
 	local function AllChoices()
 		local ret = { }
 		for i = 1,100 do ret[i] = IndexToPounds(i).." Lbs" end
 		return ret
 	end
 
-	local t = 
+	local t =
 	{
 		-- Name is used to retrieve the header and explanation text.
 		Name = "Weight",
@@ -37,7 +37,7 @@ function OptionsRowWeight()
 				end
 			end
 		end,
-	}	
+	}
 	setmetatable( t, t )
 	return t
 end
@@ -46,14 +46,14 @@ function OptionsRowGoalCalories()
 	local function IndexToCalories(i)
 		return i*10+20
 	end
-	
+
 	local function AllChoices()
 		local ret = { }
 		for i = 1,98 do ret[i] = IndexToCalories(i).." cals" end
 		return ret
 	end
 
-	local t = 
+	local t =
 	{
 		-- Name is used to retrieve the header and explanation text.
 		Name = "GoalCalories",
@@ -82,16 +82,16 @@ function OptionsRowGoalCalories()
 				end
 			end
 		end,
-	}	
+	}
 	setmetatable( t, t )
 	return t
 end
 
 function GetPlayersWithGoalType( gt )
 	local t = { }
-	for pn = PLAYER_1,NUM_PLAYERS-1 do 
-		if GAMESTATE:IsHumanPlayer(pn) and WorkoutGetProfileGoalType(pn) == gt then 
-			t[pn] = pn 
+	for pn = PLAYER_1,NUM_PLAYERS-1 do
+		if GAMESTATE:IsHumanPlayer(pn) and WorkoutGetProfileGoalType(pn) == gt then
+			t[pn] = pn
 		end
 	end
 	return t
@@ -101,14 +101,14 @@ function OptionsRowGoalSeconds()
 	local function IndexToSeconds(i)
 		return i*60+4*60
 	end
-	
+
 	local function AllChoices()
 		local ret = { }
 		for i = 1,56 do ret[i] = (IndexToSeconds(i)/60).." mins" end
 		return ret
 	end
 
-	local t = 
+	local t =
 	{
 		-- Name is used to retrieve the header and explanation text.
 		Name = "GoalTime",
@@ -137,7 +137,7 @@ function OptionsRowGoalSeconds()
 				end
 			end
 		end,
-	}	
+	}
 	setmetatable( t, t )
 	return t
 end
@@ -145,7 +145,7 @@ end
 function GetDefaultSort() return "EasyMeter" end
 
 function OptionsRowSort()
-	local Sorts = 
+	local Sorts =
 	{
 		-- Disable "Group" for v1.
 		-- "Group",
@@ -160,7 +160,7 @@ function OptionsRowSort()
 		"ChallengeMeter",
 	}
 
-	local t = 
+	local t =
 	{
 		Name = "DefaultSort",
 		SaveTo = PROFILEMAN:GetMachineProfile():GetSaved(),
@@ -184,7 +184,7 @@ end
 function GetDefaultDifficulty() return "Beginner" end
 
 function OptionsRowDifficulty()
-	local Difficulties = 
+	local Difficulties =
 	{
 		"Beginner",
 		"Easy",
@@ -193,7 +193,7 @@ function OptionsRowDifficulty()
 		"Challenge",
 	}
 
-	local t = 
+	local t =
 	{
 		Name = "DefaultDifficulty",
 		SaveTo = PROFILEMAN:GetMachineProfile():GetSaved(),
@@ -214,11 +214,11 @@ function OptionsRowDifficulty()
 	return t
 end
 
-function OptionsRowJukeboxCourses()	
+function OptionsRowJukeboxCourses()
 	local function AllChoices()
 		local t = SONGMAN:GetAllCourses(false)
 		local ret = { }
-		for i = 1,table.getn(t) do 
+		for i = 1,table.getn(t) do
 			if t[i]:GetPlayMode() == PLAY_MODE_ONI then
 				ret[i] = t[i]:GetDisplayFullTitle()
 			end
@@ -226,7 +226,7 @@ function OptionsRowJukeboxCourses()
 		return ret
 	end
 
-	local t = 
+	local t =
 	{
 		-- Name is used to retrieve the header and explanation text.
 		Name = "OptionsRowJukeboxCourses",
@@ -237,9 +237,9 @@ function OptionsRowJukeboxCourses()
 		Choices = AllChoices(),
 		LoadSelections = function(self, list, pn)
 			local c = GAMESTATE:GetCurrentCourse()
-			if c == nil then 
+			if c == nil then
 				list[1] = true
-				return 
+				return
 			end
 			local title = c:GetDisplayFullTitle()
 			local t = self.Choices
@@ -260,7 +260,7 @@ function OptionsRowJukeboxCourses()
 				end
 			end
 		end,
-	}	
+	}
 	setmetatable( t, t )
 	return t
 end

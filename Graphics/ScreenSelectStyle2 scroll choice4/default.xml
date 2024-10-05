@@ -1,11 +1,11 @@
 <ActorFrame> <children>
-	<Layer 
+	<Layer
 		Type="ActorFrame"
 		Command="x,60"
 		GainFocusCommand="linear,0.2;zoom,1.4"
 		LoseFocusCommand="linear,0.2;zoom,0.7"
 	><children>
-		<Layer 
+		<Layer
 			Condition="game == 'dance'"
 			Type="ActorFrame"
 			Command="x,-60"
@@ -41,7 +41,7 @@
 				OffCommand="%OutCommand"
 			/>
 		</children></Layer>
-		<Layer 
+		<Layer
 			Condition="game == 'pump'"
 			Type="ActorFrame"
 			Command="x,110"
@@ -68,7 +68,7 @@
 				OffCommand="%OutCommand"
 			/>
 		</children></Layer>
-		<Layer 
+		<Layer
 			Condition="game == 'pump'"
 			Type="ActorFrame"
 			Command="x,-110"

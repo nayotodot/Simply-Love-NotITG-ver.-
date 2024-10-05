@@ -1,5 +1,5 @@
 <ActorFrame> <children>
-	<Layer 
+	<Layer
 		Type="ActorFrame"
 		OnCommand="zoom,.5"
 		GainFocusCommand="stoptweening;linear,0.2;zoom,1"

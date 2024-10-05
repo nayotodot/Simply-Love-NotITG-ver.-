@@ -1,5 +1,5 @@
 <ActorFrame> <children>
-	<Layer File="ScreenWithMenuElements footer"/>	
+	<Layer File="ScreenWithMenuElements footer"/>
 
 	<Layer Type="ActorFrame" OnCommand="y,SCREEN_BOTTOM-13" > <children>
 		<Layer

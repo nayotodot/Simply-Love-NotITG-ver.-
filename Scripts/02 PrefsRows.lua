@@ -137,7 +137,7 @@ function CreatePrefsRowEnum( Params, Names, prefname )
 	local val = PREFSMAN:GetPreference(prefname)
 
 	return CreateOptionRowRange( Params, Names, prefname, 0, 1 )
-end 
+end
 
 -- creates a boolean toggle for a preference
 function CreatePrefsRowBool( Params, prefname )

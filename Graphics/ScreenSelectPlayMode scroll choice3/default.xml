@@ -1,5 +1,5 @@
 <ActorFrame> <children>
-	<Layer 
+	<Layer
 		Type="ActorFrame"
 		OnCommand="%function(self)
 			self:zoom(0.5)
@@ -25,7 +25,7 @@
 			self:GetChildAt(0):GetShader():uniform1f('saturation',0)
 		end"
 	><children>
-		<Layer 
+		<Layer
 			Type="ActorFrame"
 			Frag="saturation.frag"
 		><children>
@@ -33,8 +33,8 @@
 				File="../modebg"
 				OffCommand="%OutCommand"
 			/>
-			
-			<Layer 
+
+			<Layer
 				Type="ActorFrame"
 				OnCommand="zoom,.7;"
 			><children>
@@ -47,7 +47,7 @@
 					Type="ActorFrame"
 					OnCommand="x,8;y,16;rotationz,15;spin;effectmagnitude,0,0,+45;effectclock,bgm"
 				> <children>
-					<AutoActor 
+					<AutoActor
 						File="hand"
 						InitCommand="zbuffer,1;horizalign,right;vertalign,bottom;x,24;y,16"
 						OffCommand="linear,.5;diffusealpha,0"
@@ -59,7 +59,7 @@
 						OffCommand="linear,.5;diffusealpha,0"
 				/>
 			</children></Layer>
-			
+
 		</children></Layer>
 		<Layer
 			File="survival"

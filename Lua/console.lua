@@ -28,7 +28,7 @@ local height2 = DevTest:GetHeight()-height*2
 local quadheight = 6+height*20*scale
 local inputBase = 20+height*18*scale
 
-DevBuffer:x(10) 
+DevBuffer:x(10)
 DevBuffer:y(10+height*17*scale)
 DevInput:x(10)
 DevInput:y(inputBase)
@@ -75,7 +75,7 @@ local function eval(code)
 end
 
 local function toggleCheck(char, special)
-    return char == config.console 
+    return char == config.console
             and special.ctrl and not special.altgr
 end
 
@@ -92,7 +92,7 @@ local function getTextXY(charray)
     local x,y = 10,0
     local sw,cl,sl = SCREEN_WIDTH*1.2,0,1
     local cp = cursor.pos
-    
+
     local lines = { {1, 1}, n=1 }
 
     for i=1, table.getn(chars) do
@@ -249,7 +249,7 @@ event.Persist("key char","dev console",function(char, special)
             local text, cx, cy
 
             if char == "backspace" and cursor.pos > 0 then
-                if cursor.pos == 1 and charray[2] == "\n" then 
+                if cursor.pos == 1 and charray[2] == "\n" then
                     table.remove(charray, 2)
                 end
                 table.remove(charray, cursor.pos)
@@ -267,7 +267,7 @@ event.Persist("key char","dev console",function(char, special)
             elseif scroll.x ~= 0 then
                 if charray[1] then
                     cursor.pos = math.min(math.max(
-                        cursor.pos + (special.shift and config.skip or 1)*scroll.x, 0), 
+                        cursor.pos + (special.shift and config.skip or 1)*scroll.x, 0),
                         table.getn(charray)
                     )
                     text, cx, cy = getTextXY(charray)
@@ -307,7 +307,7 @@ event.Persist("key char","dev console",function(char, special)
                     DevCursor:y(inputBase+cy)
                 end
             elseif char == "delete" and charray[cursor.pos+1] then
-                if cursor.pos == 0 and charray[2] == "\n" then 
+                if cursor.pos == 0 and charray[2] == "\n" then
                     table.remove(charray, 2)
                 end
                 table.remove(charray, cursor.pos+1)

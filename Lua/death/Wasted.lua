@@ -11,7 +11,7 @@ function wasted:Setup()
     aftsprite:hidden(1)
 
     if not aftsprite:hascommand("HideAft") then
-        aftsprite:addcommand("HideAft", function() 
+        aftsprite:addcommand("HideAft", function()
             stitch("lua.aftoverlay"):Off()
         end)
     end
