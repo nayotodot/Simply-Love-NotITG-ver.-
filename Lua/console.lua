@@ -30,6 +30,7 @@ local inputBase = 20+height*18*scale
 
 DevBuffer:x(10)
 DevBuffer:y(10+height*17*scale)
+DevBuffer:wrapwidthpixels(SCREEN_WIDTH / DevBuffer:GetZoom())
 DevInput:x(10)
 DevInput:y(inputBase)
 DevCursor:x(10)
