@@ -154,7 +154,7 @@ function ThemeFile( file ) return THEME:GetPath( EC_GRAPHICS, '' , themeDir..'/'
 function ThemeName() local str = string.sub(THEME:GetPath(2,'','_blank.png'),9) return string.sub(str,1,string.find(str,'/')-1) end
 function IsType(a,t) return string.find(tostring(a),t) end
 function TableToString(t) local s = '' for i,v in ipairs(t) do s = s .. tostring(v) end return s end
-function GetStartScreen() SetPref("DelayedScreenLoad",false) if GetPref('BreakComboToGetItem') and GetInputType and GetInputType() == "" then return "ScreenArcadeStart" end return THEME:GetMetric('Common','FirstAttractScreen') end
+function GetStartScreen() SetPref("DelayedScreenLoad",false) if not FUCK_VERSION_4_3 then return "ScreenUnsupported"elseif GetPref('BreakComboToGetItem') and GetInputType and GetInputType() == "" then return "ScreenArcadeStart"end return THEME:GetMetric('Common','FirstAttractScreen') end
 function GetArcadeStartScreen() if GetInputType() == "" then return "ScreenArcadeStart" end	return THEME:GetMetric('Common','FirstAttractScreen') end
 function MaxLength(str,l) if string.len(str) > l then str = string.sub(str,0,l-3) .. '...' end return str end
 function RowMetric(b,a,r) if r then rowYNum = 0 rowYAdd = a rowYBase = b rowYOffTop = rowYBase + rowYAdd*0.5 return r elseif a then rowYNum = rowYNum + a end rowYNum = rowYNum + 1 if b ~= 'Exit' then rowYOffCenter = rowYBase + rowYAdd*(rowYNum+1+math.mod(rowYNum,2))/2 rowYOffBottom = rowYBase + rowYAdd*(rowYNum+1/2) end return rowYBase+rowYAdd*rowYNum end
@@ -274,7 +274,7 @@ function JudgmentInit()
 					-- if selected, use every method possible to hide the judgment sprite in case a file loads an alternate judgment font
 					-- maybe a bit overkill
 					for _, actor in ipairs{px, pxc} do
-						for i = 1, #invisibleSettings, 2 do
+						for i = 1, table.getn(invisibleSettings), 2 do
 							method = invisibleSettings[i]
 							value = invisibleSettings[i + 1]
 							if px[method] then
@@ -289,7 +289,7 @@ function JudgmentInit()
 							end
 							if actor.SetUpdateFunction then
 								actor:SetUpdateFunction(function()
-									for i = 1, #invisibleSettings, 2 do
+									for i = 1, table.getn(invisibleSettings), 2 do
 										method = invisibleSettings[i]
 										value = invisibleSettings[i + 1]
 										if px[method] then

@@ -1,0 +1,7 @@
+<ActorFrame><children>
+	<BitmapText
+		Font="Common Normal"
+		Text="This NotITG or OpenITG is unsupported to this theme.::Press &START; (Start) is goto Select Theme."
+		OnCommand="x,SCREEN_CENTER_X;y,SCREEN_CENTER_Y;diffusealpha,0;decelerate,1;diffusealpha,1"
+	/>
+</children></ActorFrame>

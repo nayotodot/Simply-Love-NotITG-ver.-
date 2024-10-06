@@ -1,9 +1,10 @@
-
 feetBaseZoom = .275
 JudgeY = 20
 
-lifeBarSizeAdd.Height = lifeBarSizeAdd.Height - 80
-lifeBarSizeAdd.OffsetY = lifeBarSizeAdd.OffsetY + 40
+if lifeBarSizeAdd then
+	lifeBarSizeAdd.Height = lifeBarSizeAdd.Height - 80;
+	lifeBarSizeAdd.OffsetY = lifeBarSizeAdd.OffsetY + 40;
+end
 
 -- judgmentFontList = { 'Love' , 'Tactics', 'Chromatic', 'Deco', 'GrooveNights', 'FP', 'ITG2' }
 
