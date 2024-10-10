@@ -9,7 +9,7 @@ function GetResumedScreen()
 	Trace("GetResumedScreen()");
 	if FUCK_EXE and GAMESTATE:IsEventMode() then
 		local Profile = PROFILEMAN:GetMachineProfile():GetSaved();
-		if Profile.Resumed then
+		if Profile.Resumed and Profile.Resumed.Use then
 			local Resumed = Profile.Resumed;
 			if Resumed then
 				local ResumedScreen           = Resumed.Screen or "";
@@ -20,7 +20,6 @@ function GetResumedScreen()
 				local ResumedSongDir          = Resumed.SongDir;
 				local ResumedDifficulty       = Resumed.Difficulty;
 				local ResumedCourseTitle      = Resumed.CourseTitle;
-				-- local ResumedCourseDifficulty = Resumed.CourseDifficulty;
 				if ResumedScreen ~= "" then
 					local t = {};
 					if ResumedPlayModeName ~= "" then
@@ -33,11 +32,16 @@ function GetResumedScreen()
 						insert(t, "Game," .. ResumedGameName);
 					end
 					if ResumedSongDir and ResumedDifficulty then
-						insert(t, "Song," .. ResumedSongDir);
-						insert(t, "Steps," .. ResumedDifficulty);
-					elseif ResumedCourseTitle --[[ and ResumedCourseDifficulty ]] then
-						insert(t, "Course," .. ResumedCourseTitle);
-						-- insert(t, "Trail," .. ResumedCourseDifficulty);
+						if SONGMAN:FindSong(ResumedSongDir) then
+							insert(t, "Song," .. ResumedSongDir);
+							insert(t, "Steps," .. ResumedDifficulty);
+						elseif ResumedScreen == "ScreenEdit" then
+							ResumedScreen = "ScreenEditMenu";
+						end
+					elseif ResumedCourseTitle then
+						if SONGMAN:FindCourse(ResumedCourseTitle) then
+							insert(t, "Course," .. ResumedCourseTitle);
+						end
 					end
 					if ResumedPlayerNumber then
 						GAMESTATE:JoinPlayer(ResumedPlayerNumber);
@@ -62,7 +66,7 @@ local PrevScreen = "";
 
 function SetResumedScreen(self)
 	Trace("SetResumedScreen()");
-	if FUCK_EXE then
+	if FUCK_EXE and GAMESTATE:IsEventMode() then
 		local name = self:GetName();
 		if name == PrevScreen then
 			Trace(format("SetResumedScreen(): `%s` is duplicate load.", name));
@@ -81,30 +85,19 @@ function SetResumedScreen(self)
 			local Song = GAMESTATE:GetCurrentSong();
 			local Steps = GAMESTATE:GetCurrentSteps(MasterPlayerNumber);
 			local Course = GAMESTATE:GetCurrentCourse();
-			-- local Trail = GAMESTATE:GetCurrentTrail(MasterPlayerNumber);
 			local Profile = PROFILEMAN:GetMachineProfile():GetSaved();
-			Profile.Resumed = {
-				Screen = Rename(name),
-				PlayModeName = PlayModeName(),
-				CurStyleName = CurStyleName(),
-				PlayerNumber = MasterPlayerNumber,
-			};
-			if Game then
-				Profile.Resumed.GameName = Game:GetName();
+			if not Profile.Resumed then
+				Profile.Resumed = {};
 			end
-			if Song then
-				Profile.Resumed.SongDir = gsub(Song:GetSongDir(), "/Songs/", "");
-				if Steps then
-					local Difficulty = Steps:GetDifficulty();
-					Profile.Resumed.Difficulty = Difficulty == DIFFICULTY_EDIT and Steps:GetDescription() or DifficultyToThemedString(Difficulty);
-				end
-			end
-			if Course then
-				Profile.Resumed.CourseTitle = Course:GetDisplayFullTitle();
-				-- if Trail then
-				-- 	Profile.Resumed.CourseDifficulty = CourseDifficultyToThemedString(Trail:GetDifficulty());
-				-- end
-			end
+			Profile.Resumed.Screen = Rename(name);
+			Profile.Resumed.PlayModeName = PlayModeName();
+			Profile.Resumed.CurStyleName = CurStyleName();
+			Profile.Resumed.PlayerNumber = MasterPlayerNumber;
+			Profile.Resumed.GameName = Game:GetName();
+			Profile.Resumed.SongDir = Song and gsub(Song:GetSongDir(), "/Songs/", "");
+			local Difficulty = Steps and Steps:GetDifficulty();
+			Profile.Resumed.Difficulty = Difficulty and (Difficulty == DIFFICULTY_EDIT and Steps:GetDescription() or DifficultyToThemedString(Difficulty));
+			Profile.Resumed.CourseTitle = Course and Course:GetDisplayFullTitle();
 			SCREENMAN:OverlayMessage("Please Wait...");
 			PROFILEMAN:SaveMachineProfile();
 			SCREENMAN:HideOverlayMessage();

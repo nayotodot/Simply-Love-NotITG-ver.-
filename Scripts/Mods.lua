@@ -1299,6 +1299,20 @@ function EnableGhostData(a) -- Use an argument of 0 for the operator menu option
 	return t
 end
 
+function UseResumedScreen()
+	local t = OptionRowBase("Use Resumed Screen");
+	t.OneChoiceForAllPlayers = true;
+	function t.LoadSelections(self, list, pn)
+		local Profile = Profile(0);
+		Profile.Resumed = Profile.Resumed or { Use = false };
+		list[1], list[2] = not Profile.Resumed.Use, Profile.Resumed.Use;
+	end
+	function t.SaveSelections(self, list, pn)
+		Profile(0).Resumed.Use = list[2];
+	end
+	return t;
+end
+
 function PlayModeType()
 	local t = OptionRowBase('Play Mode Type',{'Stages','Timer'})
 	t.OneChoiceForAllPlayers = true
