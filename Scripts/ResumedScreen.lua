@@ -32,15 +32,24 @@ function GetResumedScreen()
 						insert(t, "Game," .. ResumedGameName);
 					end
 					if ResumedSongDir and ResumedDifficulty then
-						if SONGMAN:FindSong(ResumedSongDir) then
-							insert(t, "Song," .. ResumedSongDir);
-							insert(t, "Steps," .. ResumedDifficulty);
+						local Song = SONGMAN:FindSong(ResumedSongDir);
+						if Song then
+							GAMESTATE:SetCurrentSong(Song);
+							local Steps = Song:GetAllSteps();
+							for i = 1, #Steps do
+								if DifficultyToThemedString(Steps[i]:GetDifficulty()) == ResumedDifficulty then
+									GAMESTATE:SetCurrentSteps(PLAYER_1, Steps[i]);
+									GAMESTATE:SetCurrentSteps(PLAYER_2, Steps[i]);
+									break;
+								end
+							end
 						elseif ResumedScreen == "ScreenEdit" then
 							ResumedScreen = "ScreenEditMenu";
 						end
 					elseif ResumedCourseTitle then
-						if SONGMAN:FindCourse(ResumedCourseTitle) then
-							insert(t, "Course," .. ResumedCourseTitle);
+						local Course = SONGMAN:FindCourse(ResumedCourseTitle);
+						if Course then
+							GAMESTATE:SetCurrentCourse(Course);
 						end
 					end
 					if ResumedPlayerNumber then
